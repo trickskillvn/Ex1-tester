@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Trang chủ{% endblock %}
+{% block content %}
+<h1 class="text-center mb-4">Danh sách công việc</h1>
+<div class="row">
+    {% for job in jobs %}
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">{{ job.title }}</h5>
+                <p class="card-text"><strong>Công ty:</strong> {{ job.company_name }}</p>
+                <p class="card-text"><strong>Mô tả:</strong> {{ job.description|truncate(100) }}</p>
+                <p class="card-text"><strong>Yêu cầu:</strong> {{ job.requirements|truncate(100) }}</p>
+                <p class="card-text"><strong>Lương:</strong> {{ job.salary }}</p>
+                <p class="card-text"><strong>Địa chỉ:</strong> {{ job.address }}</p>
+                <p class="card-text"><small class="text-muted">Đăng ngày: {{ job.created_at }}</small></p>
+            </div>
+            <div class="card-footer">
+                {% if session.role == 'candidate' %}
+                <a href="{{ url_for('apply_job', job_id=job.id) }}" class="btn btn-primary">Ứng tuyển</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <p class="text-center">Chưa có công việc nào.</p>
+    {% endfor %}
+</div>
+{% endblock %}

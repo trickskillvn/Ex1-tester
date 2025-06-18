@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block title %}Đăng ký ứng viên{% endblock %}
+{% block content %}
+<h2>Đăng ký ứng viên</h2>
+<form method="POST" action="{{ url_for('register_candidate') }}" enctype="multipart/form-data">
+    <h5>Thông tin cá nhân</h5>
+    <div class="mb-3">
+        <label for="full_name" class="form-label">Họ tên</label>
+        <input type="text" class="form-control" id="full_name" name="full_name" required>
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+    </div>
+    <div class="mb-3">
+        <label for="phone" class="form-label">Số điện thoại</label>
+        <input type="text" class="form-control" id="phone" name="phone" required>
+    </div>
+    <div class="mb-3">
+        <label for="dob" class="form-label">Ngày sinh</label>
+        <input type="date" class="form-control" id="dob" name="dob" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Giới tính</label>
+        <div>
+            <input type="radio" id="male" name="gender" value="Nam" required>
+            <label for="male">Nam</label>
+            <input type="radio" id="female" name="gender" value="Nữ">
+            <label for="female">Nữ</label>
+            <input type="radio" id="other" name="gender" value="Khác">
+            <label for="other">Khác</label>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="skills" class="form-label">Kỹ năng</label>
+        <textarea class="form-control" id="skills" name="skills"></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="languages" class="form-label">Ngoại ngữ</label>
+        <textarea class="form-control" id="languages" name="languages"></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="experience" class="form-label">Kinh nghiệm</label>
+        <textarea class="form-control" id="experience" name="experience"></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="education" class="form-label">Học vấn</label>
+        <textarea class="form-control" id="education" name="education"></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="introduction" class="form-label">Giới thiệu</label>
+        <textarea class="form-control" id="introduction" name="introduction"></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="avatar" class="form-label">Ảnh đại diện</label>
+        <input type="file" class="form-control" id="avatar" name="avatar" accept="image/*">
+    </div>
+    <h5>Thông tin đăng nhập</h5>
+    <div class="mb-3">
+        <label for="username" class="form-label">Tài khoản</label>
+        <input type="text" class="form-control" id="username" name="username" required>
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Mật khẩu</label>
+        <input type="password" class="form-control" id="password" name="password" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Đăng ký</button>
+</form>
+{% endblock %}

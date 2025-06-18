@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% block title %}Quản trị{% endblock %}
+{% block content %}
+<h2>Quản trị hệ thống</h2>
+
+<h4>Quản lý tài khoản</h4>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Tài khoản</th>
+            <th>Email</th>
+            <th>Số điện thoại</th>
+            <th>Tên</th>
+            <th>Vai trò</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.phone }}</td>
+            <td>{{ user.full_name or user.company_name or 'N/A' }}</td>
+            <td>{{ user.role | capitalize }}</td>
+            <td>
+                <a href="{{ url_for('delete_user', user_id=user.id) }}" class="btn btn-danger btn-sm" onclick="return confirm('Bạn có chắc muốn xóa?')">Xóa</a>
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="6">Chưa có tài khoản nào.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h4>Quản lý tin tuyển dụng</h4>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Tiêu đề</th>
+            <th>Công ty</th>
+            <th>Mức lương</th>
+            <th>Địa chỉ</th>
+            <th>Ngày đăng</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for job in jobs %}
+        <tr>
+            <td>{{ job.title }}</td>
+            <td>{{ job.company_name }}</td>
+            <td>{{ job.salary }}</td>
+            <td>{{ job.address }}</td>
+            <td>{{ job.created_at }}</td>
+            <td>
+                <a href="{{ url_for('delete_job_admin', job_id=job.id) }}" class="btn btn-danger btn-sm" onclick="return confirm('Bạn có chắc muốn xóa?')">Xóa</a>
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="6">Chưa có tin tuyển dụng nào.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h4>Quản lý tin tìm việc</h4>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Tiêu đề</th>
+            <th>Ứng viên</th>
+            <th>Kinh nghiệm</th>
+            <th>Học vấn</th>
+            <th>Ngày đăng</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for job_seek in job_seeks %}
+        <tr>
+            <td>{{ job_seek.title }}</td>
+            <td>{{ job_seek.full_name }}</td>
+            <td>{{ job_seek.experience }}</td>
+            <td>{{ job_seek.education }}</td>
+            <td>{{ job_seek.created_at }}</td>
+            <td>
+                <a href="{{ url_for('delete_job_seek_admin', job_seek_id=job_seek.id) }}" class="btn btn-danger btn-sm" onclick="return confirm('Bạn có chắc muốn xóa?')">Xóa</a>
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="6">Chưa có tin tìm việc nào.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

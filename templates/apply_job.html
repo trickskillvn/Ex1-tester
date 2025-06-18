@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Ứng tuyển công việc{% endblock %}
+{% block content %}
+<h2>Ứng tuyển: {{ job.title }}</h2>
+<form method="POST" action="{{ url_for('apply_job', job_id=job.id) }}" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="cv" class="form-label">Tải CV</label>
+        <input type="file" class="form-control" id="cv" name="cv" accept=".pdf,.doc,.docx">
+    </div>
+    <div class="mb-3">
+        <label for="cover_letter" class="form-label">Thư ứng tuyển</label>
+        <textarea class="form-control" id="cover_letter" name="cover_letter"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Ứng tuyển</button>
+    <a href="{{ url_for('home') }}" class="btn btn-secondary">Hủy</a>
+</form>
+{% endblock %}

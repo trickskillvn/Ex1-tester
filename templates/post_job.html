@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}{% if edit %}Sửa tin tuyển dụng{% else %}Đăng tin tuyển dụng{% endif %}{% endblock %}
+{% block content %}
+<h1 class="text-center mb-4">{% if edit %}Sửa tin tuyển dụng{% else %}Đăng tin tuyển dụng{% endif %}</h1>
+<form method="POST" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="title" class="form-label">Tiêu đề</label>
+        <input type="text" class="form-control" id="title" name="title" value="{% if job %}{{ job.title }}{% endif %}" required>
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Mô tả</label>
+        <textarea class="form-control" id="description" name="description" rows="5" required>{% if job %}{{ job.description }}{% endif %}</textarea>
+    </div>
+    <div class="mb-3">
+        <label for="requirements" class="form-label">Yêu cầu</label>
+        <textarea class="form-control" id="requirements" name="requirements" rows="5" required>{% if job %}{{ job.requirements }}{% endif %}</textarea>
+    </div>
+    <div class="mb-3">
+        <label for="salary" class="form-label">Lương</label>
+        <input type="text" class="form-control" id="salary" name="salary" value="{% if job %}{{ job.salary }}{% endif %}" required>
+    </div>
+    <div class="mb-3">
+        <label for="address" class="form-label">Địa chỉ</label>
+        <input type="text" class="form-control" id="address" name="address" value="{% if job %}{{ job.address }}{% endif %}" required>
+    </div>
+    <div class="mb-3">
+        <label for="education" class="form-label">Học vấn</label>
+        <input type="text" class="form-control" id="education" name="education" value="{% if job %}{{ job.education }}{% endif %}">
+    </div>
+    <div class="mb-3">
+        <label for="experience" class="form-label">Kinh nghiệm</label>
+        <input type="text" class="form-control" id="experience" name="experience" value="{% if job %}{{ job.experience }}{% endif %}">
+    </div>
+    <button type="submit" class="btn btn-primary">{% if edit %}Cập nhật{% else %}Đăng tin{% endif %}</button>
+</form>
+{% endblock %}

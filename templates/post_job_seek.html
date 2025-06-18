@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Đăng tin tìm việc{% endblock %}
+{% block content %}
+<h2>Đăng tin tìm việc</h2>
+<form method="POST" action="{{ url_for('post_job_seek') }}">
+    <div class="mb-3">
+        <label for="title" class="form-label">Tên công việc</label>
+        <input type="text" class="form-control" id="title" name="title" required>
+    </div>
+    <div class="mb-3">
+        <label for="experience" class="form-label">Kinh nghiệm</label>
+        <textarea class="form-control" id="experience" name="experience" required></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="education" class="form-label">Học vấn</label>
+        <textarea class="form-control" id="education" name="education" required></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Mô tả</label>
+        <textarea class="form-control" id="description" name="description"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Tạo</button>
+    <a href="{{ url_for('home') }}" class="btn btn-secondary">Hủy</a>
+</form>
+{% endblock %}

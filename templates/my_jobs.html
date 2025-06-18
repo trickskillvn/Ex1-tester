@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Tin tuyển dụng của tôi{% endblock %}
+{% block content %}
+<h2>Tin tuyển dụng của tôi</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Tiêu đề</th>
+            <th>Mức lương</th>
+            <th>Địa chỉ</th>
+            <th>Trạng thái</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for job in jobs %}
+        <tr>
+            <td>{{ job.title }}</td>
+            <td>{{ job.salary }}</td>
+            <td>{{ job.address }}</td>
+            <td>{{ job.status | capitalize }}</td>
+            <td>
+                <a href="{{ url_for('edit_job', job_id=job.id) }}" class="btn btn-secondary btn-sm">Sửa</a>
+                <a href="{{ url_for('delete_job', job_id=job.id) }}" class="btn btn-danger btn-sm" onclick="return confirm('Bạn có chắc muốn xóa?')">Xóa</a>
+                <a href="{{ url_for('view_applicants', job_id=job.id) }}" class="btn btn-info btn-sm">Xem ứng viên</a>
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="5">Chưa có tin tuyển dụng nào.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

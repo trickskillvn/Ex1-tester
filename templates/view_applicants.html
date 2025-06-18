@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}Danh sách ứng viên{% endblock %}
+{% block content %}
+<h2>Danh sách ứng viên: {{ job.title }}</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Tên</th>
+            <th>Email</th>
+            <th>Ngày ứng tuyển</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for applicant in applicants %}
+        <tr>
+            <td>{{ applicant.full_name }}</td>
+            <td>{{ applicant.email }}</td>
+            <td>{{ applicant.applied_at }}</td>
+            <td>
+                {% if applicant.cv_path %}
+                <a href="{{ url_for('static', filename=applicant.cv_path) }}" class="btn btn-info btn-sm">Tải CV</a>
+                {% endif %}
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="4">Chưa có ứng viên nào.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

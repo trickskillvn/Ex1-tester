@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}Đăng ký nhà tuyển dụng{% endblock %}
+{% block content %}
+<h2>Đăng ký nhà tuyển dụng</h2>
+<form method="POST" action="{{ url_for('register_company') }}">
+    <h5>Thông tin công ty</h5>
+    <div class="mb-3">
+        <label for="company_name" class="form-label">Tên công ty</label>
+        <input type="text" class="form-control" id="company_name" name="company_name" required>
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+    </div>
+    <div class="mb-3">
+        <label for="phone" class="form-label">Số điện thoại</label>
+        <input type="text" class="form-control" id="phone" name="phone" required>
+    </div>
+    <div class="mb-3">
+        <label for="address" class="form-label">Địa chỉ</label>
+        <input type="text" class="form-control" id="address" name="address">
+    </div>
+    <div class="mb-3">
+        <label for="website" class="form-label">Website</label>
+        <input type="url" class="form-control" id="website" name="website">
+    </div>
+    <div class="mb-3">
+        <label for="field" class="form-label">Lĩnh vực</label>
+        <select class="form-control" id="field" name="field">
+            <option value="">Chọn lĩnh vực</option>
+            <option value="IT">IT</option>
+            <option value="Kinh doanh">Kinh doanh</option>
+            <option value="Marketing">Marketing</option>
+            <option value="Marketing">Order</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="country" class="form-label">Quốc gia</label>
+        <input type="text" class="form-control" id="country" name="country">
+    </div>
+    <h5>Thông tin đăng nhập</h5>
+    <div class="mb-3">
+        <label for="username" class="form-label">Tài khoản</label>
+        <input type="text" class="form-control" id="username" name="username" required>
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Mật khẩu</label>
+        <input type="password" class="form-control" id="password" name="password" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Đăng ký</button>
+</form>
+{% endblock %}
